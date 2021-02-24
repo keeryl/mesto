@@ -29,6 +29,7 @@
 @import url(../blocks/profile/__edit-btn/profile__edit-btn.css);
 @import url(../blocks/profile/__description/profile__description.css);
 @import url(../blocks/profile/__add-btn/profile__add-btn.css);
+@import url(../blocks/profile/_margins/profile_margins.css);
 
 /* cards */
 

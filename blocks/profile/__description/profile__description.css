@@ -1,3 +1,5 @@
 .profile__description {
-  display: none;
+  font-size: 14px;
+  line-height: 1.2;
+  margin: 14px 0 0 0;
 }
