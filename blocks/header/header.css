@@ -1,9 +1,17 @@
 .header {
   width: 100%;
   max-width: 880px;
-  min-height: 74px;
+  min-height: 84px;
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   border-bottom: 1px solid #545454;
+}
+
+@media screen and (min-width: 930px) {
+
+  .header {
+    min-height: 119px;
+  }
+
 }

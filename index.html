@@ -11,7 +11,7 @@
   </head>
   <body class="page">
     <header class="header">
-      <a class="logo" href="#" target="_self">
+      <a class="logo logo_margin-left" href="#" target="_self">
         <img class="logo__img" src="./blocks/logo/images/logo__img.svg" alt="Логотип в виде слов Mesto Russia">
       </a>
     </header>
@@ -19,10 +19,12 @@
       <section class="profile">
         <img class="profile__photo" src="./blocks/profile/images/__photo.jpg" alt="Фото Жака Кусто в красной шапке">
         <div class="profile__info">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <div class="profile__info-wrapper">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button class="profile__edit-btn"></button>
+          </div>
           <p class="profile__description">Исследователь океана</p>
         </div>
-        <button class="profile__edit-btn"></button>
         <button class="profile__add-btn"></button>
       </section>
       <section>
