@@ -47,3 +47,7 @@
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
+
+/* semantic-wrapper */
+
+@import url(../blocks/semantic-wrapper/semantic-wrapper.css);

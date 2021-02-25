@@ -1,3 +1,12 @@
 .card__like-btn {
-  display: none;
+  cursor: pointer;
+  transform: opacity .2s linear;
+}
+
+.card__like-btn:hover {
+  opacity: .5;
+}
+
+.card__like-btn:active {
+
 }
