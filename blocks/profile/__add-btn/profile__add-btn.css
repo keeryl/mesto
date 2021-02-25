@@ -23,5 +23,6 @@
   .profile__add-btn {
     background-size: 22px 22px;
     max-width: 150px;
+    justify-self: end;
   }
 }
