@@ -12,7 +12,7 @@
   background-position: center center;
   cursor: pointer;
   transition: opacity .2s linear;
-  color: #fff
+  color: #fff;
 }
 
 .profile__add-btn:hover {
