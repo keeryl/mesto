@@ -7,7 +7,7 @@
 
 ## Ссылка на проект:
 
-https://keeryl.github.io/mesto/index.html
+https://keeryl.github.io/mesto/
 
 ##  Описание проекта:
 
