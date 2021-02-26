@@ -1,6 +1,6 @@
 .card__like-btn {
   cursor: pointer;
-  transform: opacity .2s linear;
+  transition: opacity .2s linear;
 }
 
 .card__like-btn:hover {
@@ -8,5 +8,5 @@
 }
 
 .card__like-btn:active {
-
+  fill: #000;
 }

@@ -19,6 +19,10 @@
   opacity: .6;
 }
 
+.profile__add-btn:focus {
+  outline: none;
+}
+
 @media screen and (min-width: 930px) {
   .profile__add-btn {
     background-size: 22px 22px;
