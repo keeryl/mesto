@@ -8,6 +8,8 @@
   cursor: pointer;
   border-radius: 2px;
   transition: opacity .2s linear;
+  padding: 0;
+  border: none;
 
 }
 
@@ -16,7 +18,11 @@
 }
 
 .popup__form-btn:focus {
- outline: none;
+  outline: none;
+}
+
+.popup__form-btn:active {
+  border: none;
 }
 
 @media screen and (min-width: 930px) {
