@@ -8,12 +8,9 @@
 /* header */
 
 @import url(../blocks/header/header.css);
-
-/* logo */
-
-@import url(../blocks/logo/logo.css);
-@import url(../blocks/logo/__img/logo__img.css);
-@import url(../blocks/logo/_margin-left/logo_margin-left.css);
+@import url(../blocks/header/__logo/header__logo.css);
+@import url(../blocks/header/__logo-img/header__logo-img.css);
+@import url(../blocks/header/__logo/_margin-left/header__logo_margin-left.css);
 
 /* content */
 

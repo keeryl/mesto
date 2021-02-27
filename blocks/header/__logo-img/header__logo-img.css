@@ -1,12 +1,10 @@
-.logo__img {
+.header__logo-img {
   width: 103.74px;
   height: auto;
 }
 
 @media screen and (min-width: 930px) {
-
-  .logo__img {
+  .header__logo-img {
     width: 142px;
   }
-
 }

@@ -1,7 +1,7 @@
 .header {
   width: 100%;
   max-width: 880px;
-  min-height: 84px;
+  min-height: 84px; /* В чем преимущество управления высотой через паддинги? */
   display: flex;
   justify-content: flex-start;
   align-items: center;
