@@ -90,8 +90,8 @@ function togglePopupWindow(popupElement) {
 }
 
 function getProfileContent() {
-    inputForProfileName.placeholder = profileName.textContent;
-    inputForProfileDescription.placeholder = profileDescription.textContent;
+    inputForProfileName.value = profileName.textContent;
+    inputForProfileDescription.value = profileDescription.textContent;
 }
 
 function editProfile(evt) {
