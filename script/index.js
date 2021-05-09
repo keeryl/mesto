@@ -74,8 +74,6 @@ function createCard(cardName, cardLink) {
     return card;
 }
 
-
-
 function showInitialCards () {
   initialCards.forEach(item => {
     const card = createCard(item.title, item.src);
