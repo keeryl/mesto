@@ -90,10 +90,8 @@ function togglePopupWindow(popupElement) {
 }
 
 function getProfileContent() {
-  if (popupToEditProfile.classList.contains('popup_opened')) {
-    inputForProfileName.value = profileName.textContent;
-    inputForProfileDescription.value = profileDescription.textContent;
-  }
+    inputForProfileName.placeholder = profileName.textContent;
+    inputForProfileDescription.placeholder = profileDescription.textContent;
 }
 
 function editProfile(evt) {
@@ -136,8 +134,8 @@ function deleteCard(event) {
 
 
 profileEditBtn.addEventListener('click', function () {
-  togglePopupWindow(popupToEditProfile);
   getProfileContent();
+  togglePopupWindow(popupToEditProfile);
 });
 btnToCloseEditProfilePopup.addEventListener('click', function () {togglePopupWindow(popupToEditProfile);});
 profileAddBtn.addEventListener('click', function () {togglePopupWindow(popupToAddCard);});
