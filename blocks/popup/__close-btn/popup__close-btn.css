@@ -1,4 +1,4 @@
-.popup__form-close-btn {
+.popup__close-btn {
   width: 26px;
   height: 26px;
   background-image: url(../images/__close-btn.svg);
@@ -12,18 +12,19 @@
   position: absolute;
   top: -26px;
   right: -5px;
+  z-index: 2;
 }
 
-.popup__form-close-btn:hover {
+.popup__close-btn:hover {
   opacity: .6;
 }
 
-.popup__form-close-btn:focus {
+.popup__close-btn:focus {
   outline: none;
 }
 
 @media screen and (min-width: 930px) {
-  .popup__form-close-btn {
+  .popup__close-btn {
     width: 40px;
     height: 40px;
     background-size: 40px 40px;

@@ -32,14 +32,29 @@
 
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__form/popup__form.css);
+@import url(../blocks/popup/__form/_type/popup__form_type_add-card.css);
+@import url(../blocks/popup/__form/_type/popup__form_type_edit-profile.css);
 @import url(../blocks/popup/__form-header/popup__form-header.css);
-@import url(../blocks/popup/__form-inputs/popup__form-inputs.css);
-@import url(../blocks/popup/__form-input/popup__form-input.css);
-@import url(../blocks/popup/__form-btn/popup__form-btn.css);
-@import url(../blocks/popup/__form-close-btn/popup__form-close-btn.css);
+@import url(../blocks/popup/__inputs/popup__inputs.css);
+@import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__input/_type/popup__input_type_card-name.css);
+@import url(../blocks/popup/__input/_type/popup__input_type_img-link.css);
+@import url(../blocks/popup/__input/_type/popup__input_type_profile-description.css);
+@import url(../blocks/popup/__input/_type/popup__input_type_profile-name.css);
+@import url(../blocks/popup/__submit-btn/popup__submit-btn.css);
+@import url(../blocks/popup/__submit-btn/_type/popup__submit-btn_type_add-card.css);
+@import url(../blocks/popup/__submit-btn/_type/popup__submit-btn_type_edit-profile.css);
+@import url(../blocks/popup/__close-btn/popup__close-btn.css);
+@import url(../blocks/popup/__close-btn/_type/popup__close-btn_type_add-card.css);
+@import url(../blocks/popup/__close-btn/_type/popup__close-btn_type_edit-profile.css);
+@import url(../blocks/popup/__close-btn/_type/popup__close-btn_type_view-card.css);
+@import url(../blocks/popup/__image-container/popup__image-container.css);
+@import url(../blocks/popup/__card-image/popup__card-image.css);
+@import url(../blocks/popup/__card-image-title/popup__card-image-title.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
-@import url(../blocks/popup/_opacity/popup_opacity_05.css);
-@import url(../blocks/popup/_opacity/popup_opacity_09.css);
+@import url(../blocks/popup/_type/popup_type_add-card.css);
+@import url(../blocks/popup/_type/popup_type_edit-profile.css);
+@import url(../blocks/popup/_type/popup_type_view-card.css);
 
 /* cards */
 
@@ -63,11 +78,3 @@
 /* semantic-wrapper */
 
 @import url(../blocks/semantic-wrapper/semantic-wrapper.css);
-
-
-/*card-popup-container */
-
-@import url(../blocks/card-popup-container/card-popup-container.css);
-@import url(../blocks/card-popup-container/__image/card-popup-container__image.css);
-@import url(../blocks/card-popup-container/__image-title/card-popup-container__image-title.css);
-@import url(../blocks/card-popup-container/__close-btn/card-popup-container__close-btn.css);
