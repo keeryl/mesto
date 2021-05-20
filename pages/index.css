@@ -41,9 +41,13 @@
 @import url(../blocks/popup/__input/_type/popup__input_type_img-link.css);
 @import url(../blocks/popup/__input/_type/popup__input_type_profile-description.css);
 @import url(../blocks/popup/__input/_type/popup__input_type_profile-name.css);
+@import url(../blocks/popup/__input/_state/popup__input_state_error.css);
+@import url(../blocks/popup/__input-error/popup__input-error.css);
+@import url(../blocks/popup/__input-error/_state/popup__input-error_state_visible.css);
 @import url(../blocks/popup/__submit-btn/popup__submit-btn.css);
 @import url(../blocks/popup/__submit-btn/_type/popup__submit-btn_type_add-card.css);
 @import url(../blocks/popup/__submit-btn/_type/popup__submit-btn_type_edit-profile.css);
+@import url(../blocks/popup/__submit-btn/_state/popup__submit-btn_state_inactive.css);
 @import url(../blocks/popup/__close-btn/popup__close-btn.css);
 @import url(../blocks/popup/__close-btn/_type/popup__close-btn_type_add-card.css);
 @import url(../blocks/popup/__close-btn/_type/popup__close-btn_type_edit-profile.css);

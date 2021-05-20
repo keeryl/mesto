@@ -31,8 +31,10 @@
         <form action="#" class="popup__form popup__form_type_edit-profile" name="edit-profile">
           <h2 class="popup__form-header">Редактировать профиль</h2>
           <fieldset class="popup__inputs">
-            <input class="popup__input popup__input_type_profile-name" type="text" name="profile-name" placeholder="" value="" required>
-            <input class="popup__input popup__input_type_profile-description" type="text" name="profile-description" placeholder="" value="" required>
+            <input class="popup__input popup__input_type_profile-name" type="text" name="profile-name" placeholder="Имя" value="" maxlength="40" minlength="2" required>
+            <span class="popup__input-error"></span>
+            <input class="popup__input popup__input_type_profile-description" type="text" name="profile-description" placeholder="О себе" value="" maxlength="200" minlength="2" required>
+            <span class="popup__input-error"></span>
           </fieldset>
           <button class="popup__submit-btn popup__submit-btn_type_edit-profile" type="submit">Сохранить</button>
           <button class="popup__close-btn popup__close-btn_type_edit-profile" type="reset"></button>
@@ -43,7 +45,9 @@
           <h2 class="popup__form-header">Новое место</h2>
           <fieldset class="popup__inputs">
             <input class="popup__input popup__input_type_card-name" type="text" name="card-name" placeholder="Название" value="" required>
+            <span class="popup__input-error"></span>
             <input class="popup__input popup__input_type_img-link" type="text" name="img-link" placeholder="Ссылка на картинку" value="" required>
+            <span class="popup__input-error"></span>
           </fieldset>
           <button class="popup__submit-btn popup__submit-btn_type_add-card" type="submit">Создать</button>
           <button class="popup__close-btn popup__close-btn_type_add-card" type="reset"></button>
@@ -74,6 +78,7 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
+    <script src="script/validate.js"></script>
     <script src="./script/index.js"></script>
   </body>
 </html>
