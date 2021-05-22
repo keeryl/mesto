@@ -1,7 +1,8 @@
 
 // ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ
 
-
+const inputs = Array.from(document.querySelectorAll('.popup__input'));
+const popupsArray = Array.from(document.querySelectorAll('.popup'));
 const profileEditBtn = document.querySelector('.profile__edit-btn'); //button to open edit profile popup
 const profileAddBtn = document.querySelector('.profile__add-btn'); //button to open add card popup
 const profileName = document.querySelector('.profile__name'); //<h1> with profile name in profile section
@@ -84,7 +85,24 @@ function showInitialCards () {
 showInitialCards();
 
 function togglePopupWindow(popupElement) {
-  popupElement.classList.toggle('popup_opened');
+  if (!popupElement.classList.contains('popup_opened')) {
+    document.addEventListener('keydown', function (evt){
+      if (evt.key === 'Escape') {
+        popupElement.classList.remove('popup_opened');
+        popupElement.firstElementChild.reset();
+      }
+    });
+    popupElement.classList.add('popup_opened');
+  } else {
+    document.removeEventListener('keydown', function (evt){
+      if (evt.key === 'Escape') {
+        popupElement.classList.remove('popup_opened');
+        popupElement.firstElementChild.reset();
+      }
+    });
+    popupElement.classList.remove('popup_opened');
+    popupElement.firstElementChild.reset();
+  }
 }
 
 function getProfileContent() {
@@ -142,3 +160,23 @@ btnToCloseViewCardPopup.addEventListener('click', function () {togglePopupWindow
 formToEditProfile.addEventListener('submit', editProfile);
 formToAddCard.addEventListener('submit', addCard);
 
+
+popupsArray.forEach(popupElement => {
+  popupElement.addEventListener('click', function (evt) {
+    if (evt.target === evt.currentTarget) {
+      togglePopupWindow(popupElement);
+    }
+  });
+});
+
+enableValidation({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit-btn',
+  inactiveButtonClass: 'popup__submit-btn_state_inactive',
+  inputErrorClass: 'popup__input_state_error',
+  errorMessageClass: 'popup__input-error_state_visible',
+  closeBtnSelector: '.popup__close-btn',
+  popupSelector: '.popup',
+  popupOpenedClass: 'popup_opened'
+})

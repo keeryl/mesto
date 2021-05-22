@@ -1,6 +1,6 @@
 .popup__submit-btn {
   width: 100%;
-  height: 50px;
+  min-height: 50px;
   background-color: #000;
   color: #fff;
   font-size: 14px;
@@ -23,6 +23,11 @@
 
 .popup__submit-btn:active {
   border: none;
+}
+
+.popup__submit-btn:disabled {
+  opacity: .2;
+  cursor: default;
 }
 
 @media screen and (min-width: 930px) {
