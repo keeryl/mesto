@@ -48,28 +48,6 @@ function setEventListeners (formElement, obj) {
     evt.preventDefault();
   });
 
-  closeBtn.addEventListener('click', function () {
-    inputs.forEach(inputElement => {
-      hideErrorMessage(inputElement, obj);
-    });
-  });
-
-  document.addEventListener('keydown', function (evt) {
-    inputs.forEach(inputElement => {
-      if (evt.key === 'Escape') {
-        hideErrorMessage(inputElement, obj);
-      }
-    });
-  });
-
-  popupElement.addEventListener('click', function (evt) {
-    inputs.forEach(inputElement => {
-      if (evt.target === evt.currentTarget) {
-        hideErrorMessage(inputElement, obj);
-       }
-    });
-  });
-
   inputs.forEach(inputElement => {
     inputElement.addEventListener('input', function () {
       checkInputValidation(inputElement, obj);
