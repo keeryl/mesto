@@ -35,20 +35,21 @@ function resetForm (popupElement) {
   }
 }
 
-function closePopupWindowOnEsc (popupElement, evt) {
+function closePopupWindowOnEsc (evt) {
+  const openedPopup = document.querySelector('.popup_opened');
   if (evt.key === 'Escape') {
-    closePopupWindow(popupElement);
+    closePopupWindow(openedPopup);
   }
 }
 
 function openPopupWindow (popupElement) {
   popupElement.classList.add('popup_opened');
-  document.addEventListener('keydown', function (evt) {closePopupWindowOnEsc(popupElement, evt);}); // Понял ошибку, спасибо
+  document.addEventListener('keydown', closePopupWindowOnEsc); // спасибо
 }
 
 function closePopupWindow (popupElement) {
   popupElement.classList.remove('popup_opened');
-  document.removeEventListener('keydown', function (evt){closePopupWindowOnEsc(popupElement, evt);}); // Понял ошибку, спасибо
+  document.removeEventListener('keydown', closePopupWindowOnEsc); // спасибо
   resetForm(popupElement);
 }
 
