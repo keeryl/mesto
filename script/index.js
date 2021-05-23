@@ -35,25 +35,20 @@ function resetForm (popupElement) {
   }
 }
 
+function closePopupWindowOnEsc (popupElement, evt) {
+  if (evt.key === 'Escape') {
+    closePopupWindow(popupElement);
+  }
+}
+
 function openPopupWindow (popupElement) {
   popupElement.classList.add('popup_opened');
-  document.addEventListener('keydown', function (evt) {
-    if (evt.key === 'Escape') {
-      popupElement.classList.remove('popup_opened');
-      resetForm(popupElement);
-    }
-  });
-
+  document.addEventListener('keydown', function (evt) {closePopupWindowOnEsc(popupElement, evt);}); // Понял ошибку, спасибо
 }
 
 function closePopupWindow (popupElement) {
   popupElement.classList.remove('popup_opened');
-  document.removeEventListener('keydown', function (evt){
-    if (evt.key === 'Escape') {
-      popupElement.classList.remove('popup_opened');
-      resetForm(popupElement);
-    }
-  });
+  document.removeEventListener('keydown', function (evt){closePopupWindowOnEsc(popupElement, evt);}); // Понял ошибку, спасибо
   resetForm(popupElement);
 }
 
@@ -84,7 +79,6 @@ function addCard(event) {
   const card = createCard(cardName, cardLink);
   containerForCards.prepend(card);
   closePopupWindow(popupToAddCard);
-  resetForm(popupToAddCard);
 }
 
 function addRemoveLike(event) {
@@ -118,7 +112,6 @@ popupsArray.forEach(popupElement => {
   popupElement.addEventListener('click', function (evt) {
     if (evt.target === evt.currentTarget) {
       closePopupWindow(popupElement);
-      resetForm(popupElement);
     }
   });
 });
