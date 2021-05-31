@@ -10,7 +10,7 @@
 
 class FormValidator {
 
-  constructor() {
+  constructor(data, formToValidate) {
 
   }
 }
