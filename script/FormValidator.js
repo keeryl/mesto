@@ -6,7 +6,7 @@
 // 4.имеет один публичный метод enableValidation, который включает валидацию формы.
 // Для каждой проверяемой формы создайте экземпляр класса FormValidator.
 
-
+import { config } from './index.js';
 
 class FormValidator {
 
@@ -14,3 +14,5 @@ class FormValidator {
 
   }
 }
+
+export { FormValidator };
