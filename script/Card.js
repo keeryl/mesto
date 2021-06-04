@@ -1,27 +1,16 @@
 
-// Создайте класс Card, который создаёт карточку с текстом и ссылкой на изображение:
-// 1. принимает в конструктор её данные и селектор её template-элемента;
-// 2. содержит приватные методы, которые работают с разметкой, устанавливают слушателей событий;
-// 3. содержит приватные методы для каждого обработчика;
-// 4. содержит один публичный метод, который возвращает полностью работоспособный и
-//    наполненный данными элемент карточки.
-// Для каждой карточки создайте экземпляр класса Card.
-
-const btnToCloseViewCardPopup = document.querySelector('.popup__close-btn_type_view-card');
-const popupCardImage = document.querySelector('.popup__card-image');
-const popupCardImageTitle = document.querySelector('.popup__card-image-title');
-const popupToViewCard = document.querySelector('.popup_type_view-card');
 
 class Card {
 
-    constructor(cardName, cardLink) {
+    constructor(cardName, cardLink, config) {
         this._cardName = cardName;
         this._cardLink = cardLink;
+        this._config = config;
     }
 
     _getTemplate() {
         const cardTemplate = document
-        .querySelector('#initialCardsTemplate').content
+        .querySelector(this._config.templateSelector).content
         .querySelector('.card').cloneNode(true);
         return cardTemplate;
     }

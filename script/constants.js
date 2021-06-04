@@ -18,6 +18,10 @@ const containerForCards = document.querySelector('.cards'); // <ul> container wi
 const btnToCloseEditProfilePopup = document.querySelector('.popup__close-btn_type_edit-profile');
 const btnToCloseAddCardPopup = document.querySelector('.popup__close-btn_type_add-card');
 const initialCardsTemplate = document.querySelector('#initialCardsTemplate').content; // template to make cards
+const btnToCloseViewCardPopup = document.querySelector('.popup__close-btn_type_view-card');
+const popupCardImage = document.querySelector('.popup__card-image');
+const popupCardImageTitle = document.querySelector('.popup__card-image-title');
+const popupToViewCard = document.querySelector('.popup_type_view-card');
 
 const initialCards = [
 {

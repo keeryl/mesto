@@ -1,60 +1,6 @@
 
-// import { FormValidator } from './FormValidator.js';
+import { FormValidator } from './FormValidator.js';
 import { Card } from './Card.js';
-
-// ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ
-
-const inputs = Array.from(document.querySelectorAll('.popup__input'));
-const popupsArray = Array.from(document.querySelectorAll('.popup'));
-const profileEditBtn = document.querySelector('.profile__edit-btn'); //button to open edit profile popup
-const profileAddBtn = document.querySelector('.profile__add-btn'); //button to open add card popup
-const profileName = document.querySelector('.profile__name'); //<h1> with profile name in profile section
-const profileDescription = document.querySelector('.profile__description'); // <p> with profile description in profile section
-const formToEditProfile = document.querySelector('.popup__form_type_edit-profile'); // <form> in popup to edit profile
-const formToAddCard = document.querySelector('.popup__form_type_add-card'); // <form> in popup to add card
-const popupToEditProfile = document.querySelector('.popup_type_edit-profile'); // popup with form to edit profile
-const popupToAddCard = document.querySelector('.popup_type_add-card'); // popup with form to add card
-const inputForProfileName = document.querySelector('.popup__input_type_profile-name'); // input to enter profile name
-const inputForProfileDescription = document.querySelector('.popup__input_type_profile-description'); // input to enter profile description
-const inputForCardName = document.querySelector('.popup__input_type_card-name'); // input to enter card name
-const inputForImageLink = document.querySelector('.popup__input_type_img-link'); // input to enter image link
-const containerForCards = document.querySelector('.cards'); // <ul> container with cards
-const btnToCloseEditProfilePopup = document.querySelector('.popup__close-btn_type_edit-profile');
-const btnToCloseAddCardPopup = document.querySelector('.popup__close-btn_type_add-card');
-const initialCardsTemplate = document.querySelector('#initialCardsTemplate').content; // template to make cards
-
-const initialCards = [
-{
-  title: 'Большой барьерный риф',
-  src: './blocks/card/images/big_barrier.jpg',
-  alt: 'Коричневые островки посреди голубого моря'
-},
-{
-  title: 'Амазонка',
-  src: './blocks/card/images/amazonka.jpg',
-  alt: 'Ветвящееся русло реки'
-},
-{
-  title: 'Большая голубая дыра',
-  src: './blocks/card/images/big_blue_hole.jpg',
-  alt: 'Синее пятно посреди голубого моря'
-},
-{
-  title: 'Антарктика',
-  src: './blocks/card/images/antarktika.jpg',
-  alt: 'Айсберг в море на фоне заснеженной горы'
-},
-{
-  title: 'Гаити',
-  src: './blocks/card/images/haiti.jpg',
-  alt: 'Море и береговая линия зеленого острова'
-},
-{
-  title: 'Мадагаскар',
-  src: './blocks/card/images/madagaskar.jpg',
-  alt: 'Берег со скудной растительностью на фоне лазурного моря'
-}
-];
 
 const config = {
   templateSelector: '#initialCardsTemplate',
@@ -69,11 +15,12 @@ const config = {
   popupOpenedClass: 'popup_opened'
 }
 
+
 // ФУНКЦИИ
 
 function showInitialCards () {
   initialCards.forEach(item => {
-    const card = new Card(item.title, item.src);
+    const card = new Card(item.title, item.src, config);
     const cardElement = card.createCard();
     containerForCards.append(cardElement);
   });
@@ -81,30 +28,24 @@ function showInitialCards () {
 
 showInitialCards();
 
-function resetForm (popupElement) {
-  const inputs = Array.from(popupElement.querySelectorAll('.popup__input'));
-  if (Boolean(popupElement.querySelector('.popup__form'))) {
-    popupElement.querySelector('.popup__form').reset();
-    inputs.forEach(inputElement => {hideErrorMessage(inputElement, config);});
-  }
-}
-
 function closePopupWindowOnEsc (evt) {
-  const openedPopup = document.querySelector('.popup_opened');
+  const openedPopup = document.querySelector(config.popupOpenedClass);
   if (evt.key === 'Escape') {
     closePopupWindow(openedPopup);
   }
 }
 
 function openPopupWindow (popupElement) {
-  popupElement.classList.add('popup_opened');
+  popupElement.classList.add(config.popupOpenedClass);
   document.addEventListener('keydown', closePopupWindowOnEsc);
 }
 
 function closePopupWindow (popupElement) {
-  popupElement.classList.remove('popup_opened');
+  popupElement.classList.remove(config.popupOpenedClass);
   document.removeEventListener('keydown', closePopupWindowOnEsc);
-  resetForm(popupElement);
+  formToEditProfileValidator.resetForm();
+  formToAddCardValidator.resetForm();
+
 }
 
 function getProfileContent () {
@@ -121,9 +62,9 @@ function editProfile (evt) {
 
 function addCard(event) {
   event.preventDefault();
-  cardName = inputForCardName.value;
-  cardLink = inputForImageLink.value;
-  const card = new Card(cardName, cardLink);
+  const cardName = inputForCardName.value;
+  const cardLink = inputForImageLink.value;
+  const card = new Card(cardName, cardLink, config);
   const cardElement = card.createCard();
   containerForCards.prepend(cardElement);
   closePopupWindow(popupToAddCard);
@@ -152,4 +93,7 @@ popupsArray.forEach(popupElement => {
 });
 
 
-enableValidation(config);
+const formToEditProfileValidator = new FormValidator(config, formToEditProfile);
+formToEditProfileValidator.enableValidation();
+const formToAddCardValidator = new FormValidator(config, formToAddCard);
+formToAddCardValidator.enableValidation();
