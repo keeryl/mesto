@@ -2,10 +2,11 @@
 
 class Card {
 
-    constructor(cardName, cardLink, config) {
+    constructor(cardName, cardLink, config, handleCardClick) {
         this._cardName = cardName;
         this._cardLink = cardLink;
         this._config = config;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
@@ -18,9 +19,7 @@ class Card {
     _setEventListeners() {
         this.card.querySelector('.card__delete-btn').addEventListener('click', () => {this._deleteCard()});
         this.card.querySelector('.card__like-btn').addEventListener('click', () => {this._addRemoveLike()});
-        this.card.querySelector('.card__image').addEventListener('click', () => {this._openCardPopup()});
-        btnToCloseViewCardPopup.addEventListener('click', () => {this._closeCardPopup()});
-
+        this.card.querySelector('.card__image').addEventListener('click', () => {this._handleCardClick(this._cardLink, this._cardName)});
     }
 
     createCard() {
@@ -32,18 +31,6 @@ class Card {
         cardImage.alt = this._cardName;
         cardTitle.textContent = this._cardName;
         return this.card;
-    }
-
-    _openCardPopup() {
-        popupCardImage.src = this._cardLink;
-        popupCardImageTitle.textContent = this._cardName;
-        popupToViewCard.classList.add('popup_opened');
-    }
-
-    _closeCardPopup() {
-        popupCardImage.src = '';
-        popupCardImageTitle.textContent = '';
-        popupToViewCard.classList.remove('popup_opened');
     }
 
     _deleteCard() {

@@ -1,3 +1,6 @@
+// Пока не понимаю как использовать Prettier. Он устанавливается через npm, чуть позже
+// разберусь как это сделать. Что не так в моем форматировании? Как правильно сделать?
+
 
 import { FormValidator } from './FormValidator.js';
 import { Card } from './Card.js';
@@ -12,35 +15,39 @@ const config = {
   errorMessageClass: 'popup__input-error_state_visible',
   closeBtnSelector: '.popup__close-btn',
   popupSelector: '.popup',
-  popupOpenedClass: 'popup_opened'
+  popupOpenedClass: 'popup_opened',
+  popupOpenedSelector: '.popup_opened'
 }
 
 
 // ФУНКЦИИ
+function createCard(cardTitle, cardLink, config) {
+  const card = new Card(cardTitle, cardLink, config, handleCardClick);
+  const cardElement = card.createCard();
+  containerForCards.prepend(cardElement);
+}
 
-function showInitialCards () {
-  initialCards.forEach(item => {
-    const card = new Card(item.title, item.src, config);
-    const cardElement = card.createCard();
-    containerForCards.append(cardElement);
+function showInitialCards() {
+  initialCards.reverse().forEach(item => {
+    createCard(item.title, item.src, config);
   });
 }
 
 showInitialCards();
 
-function closePopupWindowOnEsc (evt) {
-  const openedPopup = document.querySelector(config.popupOpenedClass);
+function closePopupWindowOnEsc(evt) {
+  const openedPopup = document.querySelector(config.popupOpenedSelector);
   if (evt.key === 'Escape') {
     closePopupWindow(openedPopup);
   }
 }
 
-function openPopupWindow (popupElement) {
+function openPopupWindow(popupElement) {
   popupElement.classList.add(config.popupOpenedClass);
   document.addEventListener('keydown', closePopupWindowOnEsc);
 }
 
-function closePopupWindow (popupElement) {
+function closePopupWindow(popupElement) {
   popupElement.classList.remove(config.popupOpenedClass);
   document.removeEventListener('keydown', closePopupWindowOnEsc);
   formToEditProfileValidator.resetForm();
@@ -48,12 +55,12 @@ function closePopupWindow (popupElement) {
 
 }
 
-function getProfileContent () {
+function getProfileContent() {
     inputForProfileName.value = profileName.textContent;
     inputForProfileDescription.value = profileDescription.textContent;
 }
 
-function editProfile (evt) {
+function editProfile(evt) {
   evt.preventDefault();
   profileName.textContent = inputForProfileName.value;
   profileDescription.textContent = inputForProfileDescription.value;
@@ -64,10 +71,15 @@ function addCard(event) {
   event.preventDefault();
   const cardName = inputForCardName.value;
   const cardLink = inputForImageLink.value;
-  const card = new Card(cardName, cardLink, config);
-  const cardElement = card.createCard();
-  containerForCards.prepend(cardElement);
+  createCard(cardName, cardLink, config, handleCardClick);
   closePopupWindow(popupToAddCard);
+}
+
+function handleCardClick(cardLink, cardName) {
+  popupCardImage.src = cardLink;
+  popupCardImageTitle.textContent = cardName;
+  popupToViewCard.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupWindowOnEsc);
 }
 
 // ОБРАБОТЧИКИ СОБЫТИЙ
@@ -80,6 +92,7 @@ profileEditBtn.addEventListener('click', function () {
 btnToCloseEditProfilePopup.addEventListener('click', function () {closePopupWindow(popupToEditProfile);});
 profileAddBtn.addEventListener('click', function () {openPopupWindow(popupToAddCard);});
 btnToCloseAddCardPopup.addEventListener('click', function () {closePopupWindow(popupToAddCard);});
+btnToCloseViewCardPopup.addEventListener('click', function () {closePopupWindow(popupToViewCard);});
 formToEditProfile.addEventListener('submit', editProfile);
 formToAddCard.addEventListener('submit', addCard);
 
