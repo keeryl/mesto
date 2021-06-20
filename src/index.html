@@ -6,18 +6,17 @@
     <meta name="author" content="Кирилл З.">
     <meta name="description" content="Проектная работа 4 спринта">
     <meta name="keywords" content="Яндекс, обучение, веб-разработка">
-    <link rel="stylesheet" href="./pages/index.css">
     <title>Место</title>
   </head>
   <body class="page">
     <header class="header">
       <a class="header__logo header__logo_margin-left" href="#" target="_self">
-        <img class="header__logo-img" src="./blocks/header/images/logo__img.svg" alt="Логотип в виде слов Mesto Russia">
+        <img class="header__logo-img" src="<%=require('./blocks/header/images/logo__img.svg')%>" alt="Логотип в виде слов Mesto Russia">
       </a>
     </header>
     <main class="content">
       <section class="profile profile_margins">
-        <img class="profile__photo" src="./blocks/profile/images/__photo.jpg" alt="Фото Жака Кусто в красной шапке">
+        <img class="profile__photo" src="<%=require('./blocks/profile/images/__photo.jpg')%>" alt="Фото Жака Кусто в красной шапке">
         <div class="profile__info">
           <div class="profile__info-wrapper">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -78,6 +77,5 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
-    <script type="module" src="./script/pages/index.js"></script>
   </body>
 </html>

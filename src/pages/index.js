@@ -1,14 +1,16 @@
+////////// Webpack imports //////////
+import './index.css';
+///////////***************//////////
 
-import { Section } from '../components/Section.js';
-import { FormValidator } from '../components/FormValidator.js';
-import { Card } from '../components/Card.js';
-import { PopupWithForm } from '../components/PopupWithForm.js';
-import { PopupWithImage } from '../components/PopupWithImage.js';
-import { UserInfo } from '../components/UserInfo.js';
+import { Section } from '../script/components/Section.js';
+import { FormValidator } from '../script/components/FormValidator.js';
+import { Card } from '../script/components/Card.js';
+import { PopupWithForm } from '../script/components/PopupWithForm.js';
+import { PopupWithImage } from '../script/components/PopupWithImage.js';
+import { UserInfo } from '../script/components/UserInfo.js';
+import { handleCardClick } from '../script/utils/utils.js';
 import { initialCards,
          config,
-         popupCardImage,
-         popupCardImageTitle,
          profileEditBtn,
          profileAddBtn,
          formToEditProfile,
@@ -16,12 +18,12 @@ import { initialCards,
          containerForCards,
          inputForProfileName,
          inputForProfileDescription
-        } from '../utils/constants.js';
+        } from '../script/utils/constants.js';
 
 
 // КЛАССЫ
 
-const cardsList = new Section({ 
+const cardsList = new Section({
   items: initialCards,
   renderer: (item) => {
     const card = new Card(item.title, item.src, config, handleCardClick);
@@ -33,7 +35,7 @@ const cardsList = new Section({
 cardsList.renderItems();
 
 
-const addCardPopup = new PopupWithForm(config.popupToAddCardSelector, { 
+const addCardPopup = new PopupWithForm(config.popupToAddCardSelector, {
   submitForm: (cardTitle, cardLink) => {
     const card = new Card(cardTitle, cardLink, config, handleCardClick);
     const cardElement = card.createCard();
@@ -58,7 +60,7 @@ editProfilePopup.setEventListeners();
 const viewCardPopup = new PopupWithImage(config.popupToViewCardSelector);
 viewCardPopup.setEventListeners();
 
-const userInfo = new UserInfo({ 
+const userInfo = new UserInfo({
   nameSelector: config.userNameSelector,
   infoSelector: config.userInfoSelector
 });
@@ -70,14 +72,6 @@ const formToAddCardValidator = new FormValidator(config, formToAddCard);
 formToAddCardValidator.enableValidation();
 
 
-// ФУНКЦИИ
-
-
-function handleCardClick(cardLink, cardName) {
-  popupCardImage.src = cardLink;
-  popupCardImageTitle.textContent = cardName;
-  viewCardPopup.open(cardLink, cardName);
-}
 
 // ОБРАБОТЧИКИ СОБЫТИЙ
 
@@ -94,6 +88,6 @@ profileAddBtn.addEventListener('click', () => {
 });
 
 
-
+export { viewCardPopup };
 
 

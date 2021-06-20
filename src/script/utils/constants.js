@@ -1,3 +1,14 @@
+////////// Webpack imports //////////
+import bigBarrier from '../../blocks/card/images/big_barrier.jpg';
+import amazonka from '../../blocks/card/images/amazonka.jpg';
+import bigBlueHole from '../../blocks/card/images/big_blue_hole.jpg';
+import antarktika from '../../blocks/card/images/antarktika.jpg';
+import haiti from '../../blocks/card/images/haiti.jpg';
+import madagaskar from '../../blocks/card/images/madagaskar.jpg';
+
+///////////***************//////////
+
+
 // ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ
 
 export const profileEditBtn = document.querySelector('.profile__edit-btn'); //button to open edit profile popup
@@ -13,32 +24,32 @@ export const containerForCards = document.querySelector('.cards');
 export const initialCards = [
 {
   title: 'Большой барьерный риф',
-  src: './blocks/card/images/big_barrier.jpg',
+  src: bigBarrier,
   alt: 'Коричневые островки посреди голубого моря'
 },
 {
   title: 'Амазонка',
-  src: './blocks/card/images/amazonka.jpg',
+  src: amazonka,
   alt: 'Ветвящееся русло реки'
 },
 {
   title: 'Большая голубая дыра',
-  src: './blocks/card/images/big_blue_hole.jpg',
+  src: bigBlueHole,
   alt: 'Синее пятно посреди голубого моря'
 },
 {
   title: 'Антарктика',
-  src: './blocks/card/images/antarktika.jpg',
+  src: antarktika,
   alt: 'Айсберг в море на фоне заснеженной горы'
 },
 {
   title: 'Гаити',
-  src: './blocks/card/images/haiti.jpg',
+  src: haiti,
   alt: 'Море и береговая линия зеленого острова'
 },
 {
   title: 'Мадагаскар',
-  src: './blocks/card/images/madagaskar.jpg',
+  src: madagaskar,
   alt: 'Берег со скудной растительностью на фоне лазурного моря'
 }
 ];
