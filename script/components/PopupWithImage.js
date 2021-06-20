@@ -1,16 +1,26 @@
 
 import { Popup } from './Popup.js';
+import { config
+       } from '../utils/constants.js';
 
 
-export default class PopupWithImage extends Popup {
-  constructor() {
-
+class PopupWithImage extends Popup {
+  
+  constructor(popupSelector) {
+    super(popupSelector);
   }
 
-  open {
-    // Этот класс должен перезаписывать родительский метод open
-    // В методе open класса PopupWithImage нужно
-    // вставлять в попап картинку и атрибут src изображения и подпись к картинке.
+  open(cardLink, cardName) {
+
+    this._popup.classList.add(config.popupOpenedClass);
+    
+    document.addEventListener('keydown', super._closeOnEsc.bind(this));
+    
+    this._popup.querySelector(config.popupImageSelector).src = cardLink;
+    
+    this._popup.querySelector(config.popupImageTitleSelector).textContent = cardName;
   }
 
 }
+
+export { PopupWithImage };

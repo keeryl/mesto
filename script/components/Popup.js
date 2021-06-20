@@ -1,33 +1,38 @@
-// Создайте класс Popup, который отвечает за открытие и закрытие попапа.
 
-// Этот класс:
+import { config } from '../utils/constants.js';
 
-// Принимает в конструктор единственный параметр — селектор попапа.
-
-// Содержит публичные методы open и close, которые отвечают за открытие и закрытие попапа.
-
-// Содержит приватный метод _handleEscClose, который содержит логику закрытия попапа клавишей Esc.
-
-// Содержит публичный метод setEventListeners, который добавляет слушатель клика иконке закрытия попапа.
-
-export default class Popup {
+class Popup {
   constructor(popupSelector) {
-
+    this._popup = document.querySelector(popupSelector);
   }
 
-  setEventListeners {
-    // добавляет слушатель клика иконке закрытия попапа.
+  setEventListeners() {
+    this._popup.querySelector(config.closeBtnSelector)
+    .addEventListener('click', this.close.bind(this));
+
+    this._popup.addEventListener('click', (evt) => {
+      if (evt.target === evt.currentTarget) {
+        this.close();
+      }
+    });
   }
 
-  open {
-    // открыте попапа
+  open() {
+    this._popup.classList.add(config.popupOpenedClass);
+    document.addEventListener('keydown', this._closeOnEsc.bind(this));
   }
 
-  close {
-    // закрытие попапа
+  close() {
+    this._popup.classList.remove(config.popupOpenedClass);
+    document.removeEventListener('keydown', this._closeOnEsc.bind(this));
   }
 
-  _closeOnEsc {
-    // содержит логику закрытия попапа клавишей Esc.
+  _closeOnEsc(evt) {
+    if (evt.key === 'Escape') {
+      this.close();
+    }
   }
+  
 }
+
+export { Popup };

@@ -1,26 +1,46 @@
 
-// Для каждого попапа создавайте свой экземпляр класса PopupWithForm.
-
-
 import { Popup } from './Popup.js';
+import { config } from '../utils/constants.js';
 
-export default Class PopupWithForm extends Popup {
+class PopupWithForm extends Popup {
 
-  constructor() {
-    // Кроме селектора попапа принимает в конструктор колбэк сабмита формы.
+  constructor(popupSelector, { submitForm,  resetForm}) {
+    super(popupSelector);
+    this._submitForm = submitForm;
+    this._resetForm = resetForm;
   }
 
   _getInputValues() {
-    // собирает данные всех полей формы.
+    const inputs = Array.from(this._popup.querySelectorAll(config.inputSelector));
+    return inputs;
   }
 
   setEventListeners() {
-    // Перезаписывает родительский метод setEventListeners.
-    // Метод setEventListeners класса PopupWithForm должен не только добавлять обработчик клика
-    // иконке закрытия, но и добавлять обработчик сабмита формы.
+    
+    this._popup.querySelector(config.closeBtnSelector)
+    .addEventListener('click', this.close.bind(this));
+
+    this._popup.addEventListener('click', (evt) => {
+      if (evt.target === evt.currentTarget) {
+        this.close();
+      }
+    });
+
+    this._popup.querySelector(config.formSelector)
+    .addEventListener('submit', (evt) => {
+      evt.preventDefault();
+      const inputsArr = this._getInputValues();
+      this._submitForm(inputsArr[0].value, inputsArr[1].value);
+      this.close();
+    });
   }
 
   close() {
-    // Перезаписывает родительский метод close, так как при закрытии попапа форма должна ещё и сбрасываться.
+    this._popup.classList.remove(config.popupOpenedClass);
+    document.removeEventListener('keydown', super._closeOnEsc.bind(this));
+    this._popup.querySelector(config.formSelector).reset();
+    this._resetForm();
   }
 }
+
+export { PopupWithForm };

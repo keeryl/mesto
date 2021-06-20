@@ -1,0 +1,19 @@
+{
+  "name": "yandex.praktikum.mesto",
+  "version": "0.0.1",
+  "description": "## Название проекта:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keeryl/mesto.git"
+  },
+  "author": "Keeryl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keeryl/mesto/issues"
+  },
+  "homepage": "https://github.com/keeryl/mesto#readme"
+}
