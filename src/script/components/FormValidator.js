@@ -43,14 +43,14 @@ class FormValidator {
   }
 
   _hideErrorMessage(inputElement) {
-    const inputErrorMessage = inputElement.nextElementSibling;
+    const inputErrorMessage = this._formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.remove(this._config.inputErrorClass);
     inputErrorMessage.classList.remove(this._config.errorMessageClass);
     inputErrorMessage.textContent = '';
   }
 
   _showErrorMessage(inputElement) {
-    const inputErrorMessage = inputElement.nextElementSibling;
+    const inputErrorMessage = this._formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.add(this._config.inputErrorClass);
     inputErrorMessage.classList.add(this._config.errorMessageClass);
     inputErrorMessage.textContent = inputElement.validationMessage;

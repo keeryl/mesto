@@ -5,20 +5,19 @@ import { config
 
 
 class PopupWithImage extends Popup {
-  
+
   constructor(popupSelector) {
     super(popupSelector);
+    this._popupImage = this._popup.querySelector(config.popupImageSelector);
+    this._popupImageTitle = this._popup.querySelector(config.popupImageTitleSelector);
   }
 
   open(cardLink, cardName) {
 
-    this._popup.classList.add(config.popupOpenedClass);
-    
-    document.addEventListener('keydown', super._closeOnEsc.bind(this));
-    
-    this._popup.querySelector(config.popupImageSelector).src = cardLink;
-    
-    this._popup.querySelector(config.popupImageTitleSelector).textContent = cardName;
+    super.open();
+    this._popupImage.src = cardLink;
+    this._popupImageTitle.textContent = cardName;
+    this._popupImage.alt = cardName;
   }
 
 }

@@ -67,7 +67,6 @@ export const config = {
   popupOpenedClass: 'popup_opened',
   popupOpenedSelector: '.popup_opened',
   containerForCards: '.cards',
-  formSelector: '.popup__form',
   popupToAddCardSelector: '.popup_type_add-card',
   popupToViewCardSelector: '.popup_type_view-card',
   popupToEditProfileSelector: '.popup_type_edit-profile',

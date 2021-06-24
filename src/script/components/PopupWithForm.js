@@ -8,37 +8,36 @@ class PopupWithForm extends Popup {
     super(popupSelector);
     this._submitForm = submitForm;
     this._resetForm = resetForm;
+    this._form = this._popup.querySelector(config.formSelector);
   }
 
   _getInputValues() {
+    const formData = {};
     const inputs = Array.from(this._popup.querySelectorAll(config.inputSelector));
-    return inputs;
+    inputs.forEach(item => {
+      formData[item.name] = item.value;
+    });
+    return formData;
+
+    //Метод должен возвращать объект с данными формы - название поля: значение. Затем этот объект передается в колбэк submitForm
   }
 
   setEventListeners() {
-    
-    this._popup.querySelector(config.closeBtnSelector)
-    .addEventListener('click', this.close.bind(this));
 
-    this._popup.addEventListener('click', (evt) => {
-      if (evt.target === evt.currentTarget) {
-        this.close();
-      }
-    });
+    super.setEventListeners();
 
-    this._popup.querySelector(config.formSelector)
+    this._form
     .addEventListener('submit', (evt) => {
       evt.preventDefault();
-      const inputsArr = this._getInputValues();
-      this._submitForm(inputsArr[0].value, inputsArr[1].value);
+      this._formData = this._getInputValues();
+      this._submitForm(this._formData);
       this.close();
     });
   }
 
   close() {
-    this._popup.classList.remove(config.popupOpenedClass);
-    document.removeEventListener('keydown', super._closeOnEsc.bind(this));
-    this._popup.querySelector(config.formSelector).reset();
+    super.close();
+    this._form.reset();
     this._resetForm();
   }
 }
