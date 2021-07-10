@@ -9,6 +9,7 @@ class PopupWithForm extends Popup {
     this._submitForm = submitForm;
     this._resetForm = resetForm;
     this._form = this._popup.querySelector(config.formSelector);
+    this._formBtn = this._form.querySelector('.popup__submit-btn');
   }
 
   _getInputValues() {
@@ -19,7 +20,6 @@ class PopupWithForm extends Popup {
     });
     return formData;
 
-    //Метод должен возвращать объект с данными формы - название поля: значение. Затем этот объект передается в колбэк submitForm
   }
 
   setEventListeners() {
@@ -31,7 +31,6 @@ class PopupWithForm extends Popup {
       evt.preventDefault();
       this._formData = this._getInputValues();
       this._submitForm(this._formData);
-      this.close();
     });
   }
 
@@ -40,6 +39,15 @@ class PopupWithForm extends Popup {
     this._form.reset();
     this._resetForm();
   }
+
+  setButtonTextOnPending () {
+    this._formBtn.textContent = 'Сохранение...';
+  }
+
+  setDefaultButtonText (text) {
+    this._formBtn.textContent = text;
+  }
+
 }
 
 export { PopupWithForm };
