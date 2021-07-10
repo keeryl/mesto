@@ -26,7 +26,7 @@ class Card {
 
     _setEventListeners() {
         this.card.querySelector('.card__delete-btn').addEventListener('click', () => {
-          this._handleDeleteCardBtn(this._cardId);
+          this._handleDeleteCardBtn(this._cardId, this.card);
 
         });
         this.card.querySelector('.card__like-btn').addEventListener('click', () => {
@@ -55,7 +55,7 @@ class Card {
         cardImage.src = this._cardLink;
         cardImage.alt = this._cardName;
         cardTitle.textContent = this._cardName;
-        this.card.id = this._cardId;
+        //this.card.id = this._cardId;
         return this.card;
     }
 

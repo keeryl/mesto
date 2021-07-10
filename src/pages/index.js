@@ -114,11 +114,12 @@ const editProfilePopup = new PopupWithForm(config.popupToEditProfileSelector, {
 editProfilePopup.setEventListeners();
 
 const deleteCardPopup = new PopupWithButton(config.popupDeleteCardSelector, config.confirmationButtonSelector, {
-  handleConfirmationButton: (cardId) => {
+  handleConfirmationButton: (cardId, cardElement) => {
     api.deleteCard(cardId)
     .then(result => {
       deleteCardPopup.setButtonTextOnPending();
-      document.getElementById(cardId).remove();
+      //document.getElementById(cardId).remove();
+      cardElement.remove();
       deleteCardPopup.close();
       deleteCardPopup.setDefaultButtonText();
     })
@@ -184,9 +185,9 @@ function createCard(cardTitle, cardLink, likeArr, cardOwnerId, cardId) {
         console.log(error);
       });
     },
-    handleDeleteCardBtn: (cardId) => {
+    handleDeleteCardBtn: (cardId, cardElement) => {
       deleteCardPopup.open();
-      deleteCardPopup.getCardId(cardId);
+      deleteCardPopup.getCardId(cardId, cardElement);
     },
   });
   const cardElement = card.createCard();

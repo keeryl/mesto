@@ -8,17 +8,19 @@ class PopupWithButton extends Popup {
     this._confirmationButton = this._popup.querySelector(confirmationButtonSelector);
     this._handleConfirmationButton = handleConfirmationButton;
     this._cardId;
+    this._cardElement;
   }
 
   setEventListeners () {
     super.setEventListeners();
     this._confirmationButton.addEventListener('click', () => {
-      this._handleConfirmationButton(this._cardId);
+      this._handleConfirmationButton(this._cardId, this._cardElement);
     });
   }
 
-  getCardId (cardId) {
+  getCardId (cardId, cardElement) {
     this._cardId = cardId;
+    this._cardElement = cardElement;
   }
 
   setButtonTextOnPending () {
