@@ -2,86 +2,81 @@
 
 class Card {
 
-    constructor(cardName, cardLink, likeArr, cardOwnerId, cardId, config, { handleCardClick, isOwner, hasUserLike, addLike, removeLike, handleDeleteCardBtn }) {
+    constructor(cardName, cardLink, likeArr, cardOwnerId, cardId, currentUserId, config, { handleCardClick, updateLikes, handleDeleteCardBtn }) {
         this._cardName = cardName;
         this._cardLink = cardLink;
         this._likeArr = likeArr;
         this._cardOwnerId = cardOwnerId;
         this._cardId = cardId;
+        this._currentUserId = currentUserId;
         this._config = config;
         this._handleCardClick = handleCardClick;
-        this._isOwner = isOwner;
-        this._hasUserLike = hasUserLike;
-        this._addLike = addLike;
-        this._removeLike = removeLike;
+        this._updateLikes = updateLikes;
         this._handleDeleteCardBtn = handleDeleteCardBtn;
     }
 
-    _getTemplate() {
+    _getTemplate () {
         const cardTemplate = document
         .querySelector(this._config.templateSelector).content
         .querySelector('.card').cloneNode(true);
         return cardTemplate;
     }
 
-    _setEventListeners() {
+    _setEventListeners () {
         this.card.querySelector('.card__delete-btn').addEventListener('click', () => {
           this._handleDeleteCardBtn(this._cardId, this.card);
 
         });
         this.card.querySelector('.card__like-btn').addEventListener('click', () => {
-          this._addRemoveLike()
+          this._updateLikes(this._cardId);
         });
         this.card.querySelector('.card__image').addEventListener('click', () => {
           this._handleCardClick(this._cardLink, this._cardName);
         });
     }
 
-    createCard() {
+    _isOwner () {
+      return this._currentUserId === this._cardOwnerId;
+    }
+
+    createCard () {
         this.card = this._getTemplate();
         this._setEventListeners();
         const cardImage = this.card.querySelector('.card__image');
         const cardTitle = this.card.querySelector('.card__title');
-        if (!this._isOwner(this._cardOwnerId)) {
+        if (!this._isOwner()) {
           this.card.querySelector('.card__delete-btn').remove();
         }
-        if (this._hasUserLike(this._likeArr)) {
-          this.card.querySelector('.card__like-btn').classList.add('card__like-btn_active');
+        if (this.hasUserLike()) {
+        this.card.querySelector('.card__like-btn').classList.add('card__like-btn_active');
         } else {
-          this.card.querySelector('.card__like-btn').classList.remove('card__like-btn_active');
+        this.card.querySelector('.card__like-btn').classList.remove('card__like-btn_active');
         }
         const likesCounter = this.card.querySelector('.card__like-counter');
         likesCounter.textContent = this._likeArr.length;
         cardImage.src = this._cardLink;
         cardImage.alt = this._cardName;
         cardTitle.textContent = this._cardName;
-        //this.card.id = this._cardId;
         return this.card;
     }
 
-    getLikes (newLikeArr) {
-      this._likeArr = newLikeArr;
+    hasUserLike () {
+        return this._likeArr.some(item => {
+          return item._id === this._currentUserId;
+        });
     }
 
-    setLikesCounter (responseResult) {
-      this.card.querySelector('.card__like-counter').textContent = responseResult.likes.length;
+
+    _renderLikes () {
+      this.card.querySelector('.card__like-counter').textContent = this._likeArr.length;
+      this.card.querySelector('.card__like-btn').classList.toggle('card__like-btn_active');
     }
 
-    // deleteCard (cardId) {
-    //   card = document.getElementById(cardId);
-    //   card.remove();
-    //   card = null;
-    // }
-
-    _addRemoveLike() {
-      if (this._hasUserLike(this._likeArr)) {
-        this._removeLike(this._cardId);
-        this.card.querySelector('.card__like-btn').classList.remove('card__like-btn_active');
-      }  else {
-        this._addLike(this._cardId);
-        this.card.querySelector('.card__like-btn').classList.add('card__like-btn_active');
-      }
+    updateLikes (likesArr) {
+      this._likeArr = likesArr;
+      this._renderLikes();
     }
+
 }
 
 export { Card };

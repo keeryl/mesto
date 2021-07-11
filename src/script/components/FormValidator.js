@@ -6,14 +6,12 @@ class FormValidator {
     this._formElement = formElement;
     this._inputs = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
     this._buttonElement = this._formElement.querySelector(this._config.submitButtonSelector);
-    this._closeBtn = this._formElement.querySelector(this._config.closeBtnSelector);
-    this._popupElement = this._formElement.closest(this._config.popupSelector);
+    // this._closeBtn = this._formElement.querySelector(this._config.closeBtnSelector);
   }
 
   _setEventListeners() {
     this._formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      this._toggleButtonState();
     });
     this._inputs.forEach(inputElement => {
       inputElement.addEventListener('input', () => {
@@ -21,7 +19,6 @@ class FormValidator {
         this._toggleButtonState();
       });
     });
-    this._toggleButtonState();
   }
 
   resetForm() {

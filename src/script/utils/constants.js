@@ -25,6 +25,7 @@ export const config = {
   popupOpenedClass: 'popup_opened',
   popupOpenedSelector: '.popup_opened',
   containerForCards: '.cards',
+  cardLikeBtn: '.card__like-btn',
   popupToAddCardSelector: '.popup_type_add-card',
   popupToViewCardSelector: '.popup_type_view-card',
   popupToEditProfileSelector: '.popup_type_edit-profile',
@@ -36,6 +37,7 @@ export const config = {
   popupEditAvatarSelector: '.popup_type_edit-avatar',
   popupDeleteCardSelector: '.popup_type_delete-card',
   confirmationButtonSelector: '.popup__submit-btn_type_delete-card',
+  popupSubmitBtn: '.popup__submit-btn',
   token: '4e3158fe-c157-45ee-9ba8-36277de198c7',
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-25',
 }

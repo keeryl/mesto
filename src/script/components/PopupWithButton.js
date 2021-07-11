@@ -18,17 +18,18 @@ class PopupWithButton extends Popup {
     });
   }
 
-  getCardId (cardId, cardElement) {
-    this._cardId = cardId;
-    this._cardElement = cardElement;
-  }
-
   setButtonTextOnPending () {
     this._confirmationButton.textContent = 'Сохранение...';
   }
 
   setDefaultButtonText () {
     this._confirmationButton.textContent = 'Да';
+  }
+
+  open(cardId, cardElement) {
+    super.open();
+    this._cardId = cardId;
+    this._cardElement = cardElement;
   }
 
 }
